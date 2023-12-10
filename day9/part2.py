@@ -14,8 +14,6 @@ if __name__ == "__main__":
     with open("input") as file:
         lines = [line.rstrip() for line in file]
 
-    history_lines = []
-    for line in lines:
-        history_lines.append([int(match.group(0)) for match in re.finditer("-?\d+", line)])
+    history_lines = [[int(match.group(0)) for match in re.finditer("-?\d+", line)] for line in lines]
 
     print(sum([make_prediction(l) for l in history_lines]))
